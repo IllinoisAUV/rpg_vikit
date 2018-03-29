@@ -18,21 +18,21 @@ FIND_PACKAGE(catkin REQUIRED COMPONENTS roscpp vikit_common visualization_msgs t
 
 # Add plain cmake packages 
 FIND_PACKAGE(OpenCV REQUIRED)
-FIND_PACKAGE(Eigen REQUIRED)
-FIND_PACKAGE(Sophus REQUIRED)
+FIND_PACKAGE(Eigen3 REQUIRED)
+FIND_PACKAGE(sophus REQUIRED)
 
 # Include dirs
 INCLUDE_DIRECTORIES(
   include
-  ${Eigen_INCLUDE_DIRS}
+  ${Eigen3_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
-  ${Sophus_INCLUDE_DIRS}
+  ${sophus_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
 )
 
 # Describe catkin Project
 catkin_package(
-    DEPENDS Eigen OpenCV Sophus vikit_common
+    DEPENDS Eigen3 OpenCV sophus vikit_common
     CATKIN_DEPENDS roscpp visualization_msgs tf 
     INCLUDE_DIRS include
     LIBRARIES ${PROJECT_NAME}
@@ -48,5 +48,5 @@ ADD_LIBRARY(${PROJECT_NAME} SHARED ${SOURCEFILES})
 TARGET_LINK_LIBRARIES(
   ${PROJECT_NAME}
   ${OpenCV_LIBS}
-  ${Sophus_LIBRARIES}
+  ${sophus_LIBRARIES}
   ${catkin_LIBRARIES})
